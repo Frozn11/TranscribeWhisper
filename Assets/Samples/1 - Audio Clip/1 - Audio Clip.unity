@@ -1982,9 +1982,9 @@ RectTransform:
   m_Father: {fileID: 1266884850}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &517360146
 MonoBehaviour:
@@ -2091,7 +2091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &583684871
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2251,10 +2251,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logLevel: 1
-  modelPath: Whisper/ggml-tiny.bin
+  modelPath: Whisper/ggml-large-v3-turbo.bin
   isModelPathInStreamingAssets: 1
   initOnAwake: 1
-  useGpu: 0
+  useGpu: 1
   flashAttention: 0
   language: auto
   translateToEnglish: 0
@@ -3792,11 +3792,21 @@ MonoBehaviour:
     m_Options:
     - m_Text: ggml-tiny
       m_Image: {fileID: 0}
-    - m_Text: ggml-large-v3-turbo
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1337591122}
+        m_TargetAssemblyTypeName: FileTranscriptionHandler, Assembly-CSharp
+        m_MethodName: ChangeModel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &847151366
 MonoBehaviour:
@@ -4282,10 +4292,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Export In PDF
+  m_text: Export File
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92a46627f7694e641ae91d7efdfba322, type: 2}
+  m_sharedMaterial: {fileID: -2506394014324820340, guid: 92a46627f7694e641ae91d7efdfba322, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4444,7 +4454,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1971966493}
         m_TargetAssemblyTypeName: ButtonLogic, Assembly-CSharp
-        m_MethodName: OpenPanel
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4958,6 +4968,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 62408915}
+  - {fileID: 1239474420}
   m_Father: {fileID: 1794277087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5008,19 +5019,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1195497819}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1971966493}
-        m_TargetAssemblyTypeName: ButtonLogic, Assembly-CSharp
-        m_MethodName: OpenPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1195497819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5277,7 +5276,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1337591122}
+        m_TargetAssemblyTypeName: FileTranscriptionHandler, Assembly-CSharp
+        m_MethodName: UseGPU
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1239474419
 GameObject:
@@ -5291,6 +5302,8 @@ GameObject:
   - component: {fileID: 1239474422}
   - component: {fileID: 1239474421}
   - component: {fileID: 1239474423}
+  - component: {fileID: 1239474425}
+  - component: {fileID: 1239474424}
   m_Layer: 5
   m_Name: OpenThreeDotsPanel
   m_TagString: Untagged
@@ -5305,7 +5318,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239474419}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5314,11 +5327,11 @@ RectTransform:
   - {fileID: 1016410867}
   - {fileID: 1481398725}
   - {fileID: 1412326472}
-  m_Father: {fileID: 1794277087}
+  m_Father: {fileID: 1195497817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 410, y: -70.04543}
+  m_AnchoredPosition: {x: -30.330353, y: -70.04546}
   m_SizeDelta: {x: 100, y: 104.8908}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239474421
@@ -5385,6 +5398,46 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!223 &1239474424
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239474419}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 52
+  m_TargetDisplay: 0
+--- !u!114 &1239474425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239474419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1247354193
 GameObject:
   m_ObjectHideFlags: 0
@@ -5524,7 +5577,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 415839390}
   m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 2
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -6130,15 +6183,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whisperManager: {fileID: 587639199}
-  selectFileButton: {fileID: 919762699}
-  saveFileButton: {fileID: 204412812}
+  exportFileButton: {fileID: 204412812}
   TranscribeButton: {fileID: 1862146946}
-  statusText: {fileID: 0}
-  pathText: {fileID: 2032381551}
+  deleteButton: {fileID: 0}
+  selectFileButton: {fileID: 919762699}
+  textFilePath: {fileID: 2032381551}
+  dropdownLanguage: {fileID: 1824540034}
+  dropdownModel: {fileID: 847151365}
+  toggleGPU: {fileID: 1219856059}
   buttonTemplate: {fileID: 1971966491}
   recentFileList: {fileID: 166880176}
   number: 0
-  ButtonsCollections: []
+  buttonsCollections: []
 --- !u!1 &1381543140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6198,8 +6254,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Delete File
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 92a46627f7694e641ae91d7efdfba322, type: 2}
+  m_sharedMaterial: {fileID: -2506394014324820340, guid: 92a46627f7694e641ae91d7efdfba322, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6394,7 +6450,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1971966493}
         m_TargetAssemblyTypeName: ButtonLogic, Assembly-CSharp
-        m_MethodName: OpenPanel
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7005,7 +7061,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1971966493}
         m_TargetAssemblyTypeName: ButtonLogic, Assembly-CSharp
-        m_MethodName: OpenPanel
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8623,7 +8679,6 @@ RectTransform:
   - {fileID: 2027430875}
   - {fileID: 439234783}
   - {fileID: 1195497817}
-  - {fileID: 1239474420}
   m_Father: {fileID: 1971966492}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8957,7 +9012,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1337591122}
+        m_TargetAssemblyTypeName: FileTranscriptionHandler, Assembly-CSharp
+        m_MethodName: ChangeLanguage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1824540035
 MonoBehaviour:
@@ -9611,30 +9678,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1971966493}
-        m_TargetAssemblyTypeName: ButtonLogic, Assembly-CSharp
-        m_MethodName: OpenTranscribe
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1971966493}
-        m_TargetAssemblyTypeName: ButtonLogic, Assembly-CSharp
-        m_MethodName: OpenPanel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1914245968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10065,7 +10108,8 @@ MonoBehaviour:
   progress: {fileID: 439234781}
   transcription: {fileID: 1531205261}
   panel: {fileID: 1239474419}
-  openThreeDotButton: {fileID: 1914245967}
+  openThreeDotButton: {fileID: 1195497818}
+  openTranscriptionThreeDotButton: {fileID: 1914245967}
   exportThreeDotButton: {fileID: 1016410868}
   renameThreeDotButton: {fileID: 1481398726}
   deleteThreeDotButton: {fileID: 1412326473}
@@ -10500,7 +10544,7 @@ GameObject:
   - component: {fileID: 2032381552}
   - component: {fileID: 2032381551}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextFilePath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
