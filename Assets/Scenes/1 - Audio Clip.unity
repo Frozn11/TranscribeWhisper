@@ -2247,14 +2247,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 587639197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9370225a2ca94276b870d5f87b0db55, type: 3}
+  m_Script: {fileID: 11500000, guid: 57d0fc8f8a184b94ca2100f3394e8170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   logLevel: 1
-  modelPath: Whisper/ggml-large-v3-turbo.bin
+  modelPath: Whisper/ggml-tiny.bin
   isModelPathInStreamingAssets: 1
   initOnAwake: 1
-  useGpu: 1
+  useGpu: 0
   flashAttention: 0
   language: auto
   translateToEnglish: 0
@@ -10084,9 +10084,9 @@ RectTransform:
   - {fileID: 1803436235}
   m_Father: {fileID: 166880176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105.30499, y: -138.56595}
   m_SizeDelta: {x: 746.61, y: 57.0715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1971966493
@@ -10393,9 +10393,9 @@ RectTransform:
   - {fileID: 1772608349}
   m_Father: {fileID: 166880176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105.30499, y: 0}
   m_SizeDelta: {x: 0, y: 115.7302}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2027430874
