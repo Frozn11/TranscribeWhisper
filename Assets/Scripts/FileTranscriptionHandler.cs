@@ -11,6 +11,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using UnityEngine.Networking;
+using System.Threading.Tasks;
 using System.IO;
 using TMPro;
 
@@ -33,12 +34,9 @@ public class FileTranscriptionHandler : MonoBehaviour {
     public int number;
     public List<GameObject> buttonsCollections = new List<GameObject>();
 
-    static string BaseSavePath =>
-        Path.Combine(
-            (SystemInfo.deviceType == DeviceType.Desktop)
-                ? Directory.GetParent(Application.dataPath).FullName
-                : Application.persistentDataPath, "Saves");
-
+    static string BaseSavePath => 
+        Path.Combine(Application.persistentDataPath, "Saves");
+    
     private string StuffFilePath => Path.Combine(BaseSavePath, "stuff.lul");
 
     string currentTranscription;
@@ -60,11 +58,14 @@ public class FileTranscriptionHandler : MonoBehaviour {
         buttonTemplate.SetActive(false);
         LoadFiles();
         ListModel();
+    
+        // Ensure the manager knows the initial toggle state without reloading
+        whisperManager.useGpu = toggleGPU.isOn; 
+    
         selectFileButton.onClick.AddListener(OpenFileBrowser);
         if (exportFileButton != null) exportFileButton.interactable = false;
         if (TranscribeButton != null) TranscribeButton.interactable = false;
     }
-
     public void OpenFileBrowser() {
         var extensions = new[] { new ExtensionFilter("Audio Files", "mp3", "wav", "ogg", "m4a") };
         var paths = StandaloneFileBrowser.OpenFilePanel("Select File", "", extensions, false);
@@ -381,10 +382,17 @@ public class FileTranscriptionHandler : MonoBehaviour {
         }
         
     }
-    public void UseGPU(bool stuff) {
-        toggleGPU.isOn = stuff;
-        
-        Debug.Log($"Use GPU Button{toggleGPU.isOn}");
+    public async void UseGPU(bool isOn) {
+        // Disable the toggle so the user can't spam it while the model reloads
+        toggleGPU.interactable = false;
+
+        Debug.Log($"Switching GPU to {isOn}. This may take a few seconds...");
+    
+        // Call the improved method in WhisperManager
+        await Task.Run(() => whisperManager.SetGpu(isOn)); 
+
+        // Re-enable the toggle once the model is ready
+        toggleGPU.interactable = true;
     }
 
 }
