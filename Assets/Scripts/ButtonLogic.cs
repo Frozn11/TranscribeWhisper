@@ -48,7 +48,7 @@ public class ButtonLogic : MonoBehaviour {
             InteractPanel(PanelAction.Close);;
         });
         exportThreeDotButton.onClick.AddListener(() => {
-            FileTranscriptionHandler.instance.SaveTranscription(transcribe);
+            FileTranscriptionHandler.instance.SaveTranscription(transcribe, fileNameText.text);
             InteractPanel(PanelAction.Close);;
         });
         renameThreeDotButton.onClick.AddListener(() => {
@@ -68,7 +68,7 @@ public class ButtonLogic : MonoBehaviour {
         
         FileTranscriptionHandler.instance.exportFileButton.onClick.RemoveAllListeners();
         FileTranscriptionHandler.instance.exportFileButton.onClick.AddListener(() => {
-            FileTranscriptionHandler.instance.SaveTranscription(transcribe);
+            FileTranscriptionHandler.instance.SaveTranscription(transcribe, fileNameText.text);
         });
     }
 

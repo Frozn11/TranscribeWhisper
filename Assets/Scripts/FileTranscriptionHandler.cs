@@ -198,7 +198,7 @@ public class FileTranscriptionHandler : MonoBehaviour {
         }
     }
 
-    public void SaveTranscription(string transcription) {
+    public void SaveTranscription(string transcription, string name) {
         if (string.IsNullOrEmpty(transcription)) {
             Debug.Log("Goback"); 
             return;
@@ -210,7 +210,7 @@ public class FileTranscriptionHandler : MonoBehaviour {
             new ExtensionFilter("Portable Document Format", "pdf"),
         };
 
-        var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", "Transcription", extensions);
+        var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", $"{name}", extensions);
 
         if (string.IsNullOrEmpty(path)) return;
 
