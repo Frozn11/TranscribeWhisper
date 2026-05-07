@@ -205,8 +205,8 @@ public class FileTranscriptionHandler : MonoBehaviour {
         }
 
         var extensions = new[] {
-            new ExtensionFilter("Text File", "txt"),
             new ExtensionFilter("Word Document", "docx"),
+            new ExtensionFilter("Text File", "txt"),
             new ExtensionFilter("Portable Document Format", "pdf"),
         };
 
